@@ -85,14 +85,11 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db_djfull',
-        'HOST': '127.0.0.1',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'PORT': 5432
-    }
+    'default': dj_database_url.config(
+        # Render buscará la variable DATABASE_URL. Si no existe, usa la local.
+        default=os.environ.get('DATABASE_URL', 'postgresql://postgres:tu_password_local@localhost:5432/tu_db_local'),
+        conn_max_age=600
+    )
 }
 
 
