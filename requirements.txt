@@ -6,3 +6,5 @@ python-decouple==3.8
 whitenoise==6.6.0
 Pillow==10.0.1
 xhtml2pdf==0.2.11
+django-userforeignkey==0.6.1
+djangorestframework==3.14.0
