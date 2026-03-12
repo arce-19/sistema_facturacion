@@ -30,3 +30,13 @@ urlpatterns = [
     path('facturas/clientes/<int:pk>',cliente_add_modify,name="fac_cliente_mod"),
 
 ]
+
+from django.contrib.auth.models import User
+
+# crea un admin automáticamente si no existe
+try:
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser('admin', 'admin@ejemplo.com', 'admin1234')
+        print("Usuario admin creado: admin / admin1234")
+except:
+    pass
